@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@cloud-technology/cli-prompt':
+        specifier: ^0.1.84
+        version: 0.1.84
     devDependencies:
       typescript:
         specifier: ^5.4.5
@@ -14,11 +18,17 @@ importers:
 
 packages:
 
+  '@cloud-technology/cli-prompt@0.1.84':
+    resolution: {integrity: sha512-PB12yr87A/qlNDXDv8GHUSUiNOVGRF4on+OSBpwfCHw5WHs+4SpRIYR5PbqWKInpFKh9XK8an02rxY8WovFgew==}
+    engines: {node: ^16.x}
+
   typescript@5.4.5:
     resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
 snapshots:
+
+  '@cloud-technology/cli-prompt@0.1.84': {}
 
   typescript@5.4.5: {}

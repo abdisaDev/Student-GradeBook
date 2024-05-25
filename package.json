@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc --outFile ./build/app.js ./src/app.ts && node ./build/app"
+    "start": "tsc --outDir ./build ./src/app.ts --module esnext --target es2022 && node ./build/app"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@cloud-technology/cli-prompt": "^0.1.84"
   }
 }
