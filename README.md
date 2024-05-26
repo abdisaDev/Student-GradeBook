@@ -1,8 +1,8 @@
 ### Student-GradeBook
 
-• Description: Build a student gradebook application where teachers can input grades for each student in different subjects. 
-               Students' information such as name, ID, and grades in various subjects should be stored. 
-• Data Structure: Use a hashmap or dictionary to store student information, with arrays or lists for grades.
+• Description: Build a student gradebook application where teachers can input grades for each student in different subjects. <br />
+               Students' information such as name, ID, and grades in various subjects should be stored. <br />
+• Data Structure: Use a hashmap or dictionary to store student information, with arrays or lists for grades. <br />
 
 ### Usage
 sample to update student result
@@ -19,5 +19,5 @@ To run the application
 4. pnpm run start // this script compiles the typescript code to javascript and run the javascript on node enviroment
 
 ### Author
-Abdisa Alemu <abdisaDev@gmail.com>
+Abdisa Alemu <abdisaDev@gmail.com> <br />
 ID -> ATE/2603/14
