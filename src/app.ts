@@ -105,11 +105,28 @@ class StudentGradeBook {
     return "Grade Well Updated!";
   }
 
-  registerStudent(studentInfo: GradeBook) {
-    gradeBooks.push(studentInfo);
+  async registerStudent() {
+    const teacherName = await this.prompt("Your Name (optional): \n>>> ");
+    console.log("------------ Student Info ------------");
+    const studentData: GradeBook = {
+      studentId: gradeBooks.length + 1,
+      firstName: await this.prompt("First Name: \n>>> "),
+      lastName: await this.prompt("Last Name: \n>>> "),
+      age: await this.prompt("Age: \n>>> "),
+      gender: await this.prompt("Gender: \n>>> "),
+      subject: [
+        {
+          name: await this.prompt("Subject Name: \n>>> "),
+          teacherName,
+          result: await this.prompt("Result: \n>>> "),
+        },
+      ],
+    };
+    gradeBooks.push(studentData);
     return "Student Added";
   }
 }
 
 const a = new StudentGradeBook();
-console.log(await a.submitGrade(1));
+console.log(await a.registerStudent());
+console.log(gradeBooks);
