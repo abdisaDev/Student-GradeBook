@@ -135,9 +135,15 @@ class StudentGradeBook {
     const indexOfStudent = this.findUser(studentId);
     const student: GradeBook = gradeBooks[indexOfStudent];
     console.log(
-      "Which thing you want to update?\n1. Student Name\n2. Age\n3. Result\n4. Gender\n5. Subject Name\n6. Your Name\n0. Cancel\n"
+      "Which thing you want to update?\n1. Student Name\n2. Age\n3. Result\n4. Gender\n5. Subject Name\n0. Cancel\n"
     );
     const choise = Number(await this.prompt(">>> "));
+    const subjects: string[] = [];
+    for (let subject of student.subject) {
+      subjects.push(subject.name);
+    }
+    let choosenSubject: string;
+    let indexOfSubject: number;
     switch (choise) {
       case 1:
         const studentName: string = await this.prompt(
@@ -152,23 +158,30 @@ class StudentGradeBook {
         student.age = Number(await this.prompt("Enter student age\n>>> "));
         break;
       case 3:
-        const subjects: string[] = [];
-        for (let subject of student.subject) {
-          subjects.push(subject.name);
-        }
-        const choosenSubject: string = await this.prompt(
+        choosenSubject = await this.prompt(
           `Select subject: ${subjects.toString()}\n>>> `
         );
-        const indexOfSubject: number = subjects.indexOf(
-          choosenSubject.toUpperCase()
-        );
+        indexOfSubject = subjects.indexOf(choosenSubject.toUpperCase());
         student.subject[indexOfSubject].result = Number(
           await this.prompt("Insert the new grade\n>>> ")
         );
         break;
-      // student.subject = Number(await this.prompt("Enter student age\n>>> "));
+      case 4:
+        student.gender = await this.prompt("Insert gender\n>>> ");
+        break;
+      case 5:
+        choosenSubject = await this.prompt(
+          `Select subject: ${subjects.toString()}\n>>> `
+        );
+        indexOfSubject = subjects.indexOf(choosenSubject.toUpperCase());
+        student.subject[indexOfSubject].name = await this.prompt(
+          "Insert the new Name\n>>> "
+        );
+        break;
+      case 0:
+        return "Bye!";
     }
-    // gradeBooks[indexOfStudent];
+    return "Student Data Updated";
   }
 }
 console.log(gradeBooks[0].subject[0].result);

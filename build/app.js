@@ -106,8 +106,14 @@ class StudentGradeBook {
     async updateStudentData(studentId) {
         const indexOfStudent = this.findUser(studentId);
         const student = gradeBooks[indexOfStudent];
-        console.log("Which thing you want to update?\n1. Student Name\n2. Age\n3. Result\n4. Gender\n5. Subject Name\n6. Your Name\n0. Cancel\n");
+        console.log("Which thing you want to update?\n1. Student Name\n2. Age\n3. Result\n4. Gender\n5. Subject Name\n0. Cancel\n");
         const choise = Number(await this.prompt(">>> "));
+        const subjects = [];
+        for (let subject of student.subject) {
+            subjects.push(subject.name);
+        }
+        let choosenSubject;
+        let indexOfSubject;
         switch (choise) {
             case 1:
                 const studentName = await this.prompt("Insert Student Full Name\n>>> ");
@@ -120,17 +126,22 @@ class StudentGradeBook {
                 student.age = Number(await this.prompt("Enter student age\n>>> "));
                 break;
             case 3:
-                const subjects = [];
-                for (let subject of student.subject) {
-                    subjects.push(subject.name);
-                }
-                const choosenSubject = await this.prompt(`Select subject: ${subjects.toString()}\n>>> `);
-                const indexOfSubject = subjects.indexOf(choosenSubject.toUpperCase());
+                choosenSubject = await this.prompt(`Select subject: ${subjects.toString()}\n>>> `);
+                indexOfSubject = subjects.indexOf(choosenSubject.toUpperCase());
                 student.subject[indexOfSubject].result = Number(await this.prompt("Insert the new grade\n>>> "));
                 break;
-            // student.subject = Number(await this.prompt("Enter student age\n>>> "));
+            case 4:
+                student.gender = await this.prompt("Insert gender\n>>> ");
+                break;
+            case 5:
+                choosenSubject = await this.prompt(`Select subject: ${subjects.toString()}\n>>> `);
+                indexOfSubject = subjects.indexOf(choosenSubject.toUpperCase());
+                student.subject[indexOfSubject].name = await this.prompt("Insert the new Name\n>>> ");
+                break;
+            case 0:
+                return "Bye";
         }
-        // gradeBooks[indexOfStudent];
+        return "Student Data Updated";
     }
 }
 console.log(gradeBooks[0].subject[0].result);
