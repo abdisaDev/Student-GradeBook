@@ -31,6 +31,11 @@ const gradeBooks = [
                 teacherName: "Mr. Yared",
                 result: 100,
             },
+            {
+                name: SubjectNames.WEB,
+                teacherName: "Mr. Yared",
+                result: 100,
+            },
         ],
     },
 ];
@@ -98,7 +103,37 @@ class StudentGradeBook {
         gradeBooks.push(studentData);
         return "Student Added";
     }
+    async updateStudentData(studentId) {
+        const indexOfStudent = this.findUser(studentId);
+        const student = gradeBooks[indexOfStudent];
+        console.log("Which thing you want to update?\n1. Student Name\n2. Age\n3. Result\n4. Gender\n5. Subject Name\n6. Your Name\n0. Cancel\n");
+        const choise = Number(await this.prompt(">>> "));
+        switch (choise) {
+            case 1:
+                const studentName = await this.prompt("Insert Student Full Name\n>>> ");
+                const [firstName, lastName] = studentName.split(" ");
+                student.firstName = firstName;
+                student.lastName = lastName;
+                console.log("Student Name Updated");
+                break;
+            case 2:
+                student.age = Number(await this.prompt("Enter student age\n>>> "));
+                break;
+            case 3:
+                const subjects = [];
+                for (let subject of student.subject) {
+                    subjects.push(subject.name);
+                }
+                const choosenSubject = await this.prompt(`Select subject: ${subjects.toString()}\n>>> `);
+                const indexOfSubject = subjects.indexOf(choosenSubject.toUpperCase());
+                student.subject[indexOfSubject].result = Number(await this.prompt("Insert the new grade\n>>> "));
+                break;
+            // student.subject = Number(await this.prompt("Enter student age\n>>> "));
+        }
+        // gradeBooks[indexOfStudent];
+    }
 }
+console.log(gradeBooks[0].subject[0].result);
 const a = new StudentGradeBook();
-console.log(await a.registerStudent());
-console.log(gradeBooks);
+console.log(await a.updateStudentData(1));
+console.log(gradeBooks[0].subject[0].result);
