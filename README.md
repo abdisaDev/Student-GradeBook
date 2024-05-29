@@ -22,21 +22,12 @@ To run the application
 4. pnpm run start // this script compiles the typescript code to javascript and run the javascript on node enviroment
 
 ### Authors
-| Name | ID No. | E-Mail |
-| ---- | ------ | ------ |
-| Abdisa Alemu | ATE/2603/14 | <abdisaDev@gmail.com> |
+|No. | Name | ID No. | E-Mail |
+| --- | ---- | ------ | ------ |
+| 1. | Abdisa Alemu | ATE/2603/14 | <abdisaDev@gmail.com> |
+| 2. | Mihret Girum |  ATE/1607/14 | <mihretgirum17@gmail.com> |
+| 3. | Abel Taye | ATE/3156/14 | <alta053125@gmail.com> |
+| 4. | Fasika Dagnachew | ATE/1989/14 | <fasika1515@gmail.com> |
+| 5. | Yosef Ahmedin | ATE/2719/14 | <yosef.ahmedin@aait.edu.et> |
+| 6. | Nahom Tsehaye | ATE/2371/14 | <nahionly@gmail.com> |
 
-Mihret Girum <mihretgirum17@gmail.com> <br />
-ID -> ATE/1607/14 <br /> <br />
-
-Abel Taye <alta053125@gmail.com> <br />
-ID -> ATE/3156/14 <br /> <br />
-
-Fasika Dagnachew <fasika1515@gmail.com> <br />
-ID -> ATE/1989/14 <br /> <br />
-
-Yosef Ahmedin <yosef.ahmedin@aait.edu.et> <br />
-ID -> ATE/2719/14 <br /> <br />
-
-Nahom Tsehaye <nahionly@gmail.com> <br />
-ID -> ATE/2371/14 <br /> <br />
