@@ -17,9 +17,9 @@ console.log(gradeBooks[0].subject[0].result);
 To run the application
 
 ``` node
-1. clone this repo
-2. cd to repo
-3. pnpm install or npm install // to install dependencies (typescript and prompt module)
+1. git clone https://github.com/abdisaDev/Student-GradeBook.git // clone this repo
+2. cd Student-GradeBook // change the directory to repo
+3. pnpm install or npm install // install dependencies (typescript and prompt module)
 4. pnpm run start // this script compiles the typescript code to javascript and run the javascript on node enviroment
 ```
 
