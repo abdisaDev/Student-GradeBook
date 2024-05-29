@@ -15,7 +15,7 @@ console.log(gradeBooks[0].subject[0].result);
 ```
 To run the application
 
-``` git
+``` rust
 1. git clone https://github.com/abdisaDev/Student-GradeBook.git // clone this repo
 2. cd Student-GradeBook // change the directory to repo
 3. pnpm install or npm install // install dependencies (typescript and prompt module)
