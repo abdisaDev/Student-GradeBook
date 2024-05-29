@@ -1,4 +1,4 @@
-#### Student-GradeBook
+### Student-GradeBook
 
 • *Description*: Build a student gradebook application where teachers can input grades for each student in different subjects. <br />
                   Students' information such as name, ID, and grades in various subjects should be stored. <br /> <br />
