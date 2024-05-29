@@ -19,6 +19,21 @@ To run the application
 3. pnpm install or npm install // to install dependencies (typescript and prompt module)
 4. pnpm run start // this script compiles the typescript code to javascript and run the javascript on node enviroment
 
-### Author
+### Authors
 Abdisa Alemu <abdisaDev@gmail.com> <br />
-ID -> ATE/2603/14
+ID -> ATE/2603/14 <br /> <br />
+
+Mihret Girum <mihretgirum17@gmail.com> <br />
+ID -> ATE/1607/14 <br /> <br />
+
+Abel Taye <alta053125@gmail.com> <br />
+ID -> ATE/3156/14 <br /> <br />
+
+Fasika Dagnachew <fasika1515@gmail.com> <br />
+ID -> ATE/1989/14 <br /> <br />
+
+Yosef Ahmedin <yosef.ahmedin@aait.edu.et> <br />
+ID -> ATE/2719/14 <br /> <br />
+
+Nahom Tsehaye <nahionly@gmail.com> <br />
+ID -> ATE/2719/14 <br /> <br />
