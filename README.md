@@ -15,7 +15,7 @@ console.log(await a.updateStudentData(1));
 console.log(gradeBooks[0].subject[0].result);
 ```
 To run the application
-``` bash
+``` doc
 1. clone this repo
 2. cd to repo
 3. pnpm install or npm install // to install dependencies (typescript and prompt module)
