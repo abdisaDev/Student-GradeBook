@@ -22,8 +22,9 @@ To run the application
 4. pnpm run start // this script compiles the typescript code to javascript and run the javascript on node enviroment
 
 ### Authors
-Abdisa Alemu <abdisaDev@gmail.com> <br />
-ID -> ATE/2603/14 <br /> <br />
+| Name | ID No. | E-Mail |
+| ---- | ------ | ------ |
+| Abdisa Alemu | ATE/2603/14 | <abdisaDev@gmail.com> |
 
 Mihret Girum <mihretgirum17@gmail.com> <br />
 ID -> ATE/1607/14 <br /> <br />
