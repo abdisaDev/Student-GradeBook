@@ -8,11 +8,12 @@
 ### Usage
 sample to update student result
 
+``` javascript
 console.log(gradeBooks[0].subject[0].result);
 const a = new StudentGradeBook();
 console.log(await a.updateStudentData(1));
 console.log(gradeBooks[0].subject[0].result);
-
+```
 To run the application
 1. clone this repo
 2. cd to repo
