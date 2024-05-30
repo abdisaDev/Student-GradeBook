@@ -25,10 +25,11 @@ To run the application
 ### Authors
 |No. | Name | ID No. | E-Mail |
 | --- | ---- | ------ | ------ |
-| 1. | [Abdisa Alemu](https://github.com/abdisaDev) | ATE/2603/14 | <abdisaDev@gmail.com> |
+| 1. | [Abdisa Alemu *](https://github.com/abdisaDev) | ATE/2603/14 | <abdisaDev@gmail.com> |
 | 2. | [Mihret Girum](https://github.com/mhreall) |  ATE/1607/14 | <mihretgirum17@gmail.com> |
 | 3. | [Abel Taye](https://github.com/abelliverpool) | ATE/3156/14 | <alta053125@gmail.com> |
 | 4. | [Fasika Dagnachew](https://github.com/phoenixfas) | ATE/1989/14 | <fasika1515@gmail.com> |
 | 5. | [Yosef Ahmedin](https://github.com/yosefahmedin) | ATE/2719/14 | <yosef.ahmedin@aait.edu.et> |
 | 6. | [Nahom Tsehaye](https://github.com/nahitse) | ATE/2371/14 | <nahionly@gmail.com> |
+| 6. | [Kalkidan Tsegaye](https://github.com/kaltg) | ATE/0652/14 | <kalmikael1212@gmail.com> |
 
