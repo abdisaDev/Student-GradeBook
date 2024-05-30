@@ -31,5 +31,5 @@ To run the application
 | 4. | [Fasika Dagnachew](https://github.com/phoenixfas) | ATE/1989/14 | <fasika1515@gmail.com> |
 | 5. | [Yosef Ahmedin](https://github.com/yosefahmedin) | ATE/2719/14 | <yosef.ahmedin@aait.edu.et> |
 | 6. | [Nahom Tsehaye](https://github.com/nahitse) | ATE/2371/14 | <nahionly@gmail.com> |
-| 6. | [Kalkidan Tsegaye](https://github.com/kaltg) | ATE/0652/14 | <kalmikael1212@gmail.com> |
+| 7. | [Kalkidan Tsegaye](https://github.com/kaltg) | ATE/0652/14 | <kalmikael1212@gmail.com> |
 
