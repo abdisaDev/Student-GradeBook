@@ -66,7 +66,7 @@ class StudentGradeBook {
 
   findUser(studentId: number) {
     for (let gradeBook of gradeBooks) {
-      if (studentId === gradeBook.studentId) {
+      if (Number(studentId) === gradeBook.studentId) {
         return gradeBooks.indexOf(gradeBook);
       }
     }
@@ -75,7 +75,6 @@ class StudentGradeBook {
 
   remainingSubjects(studentId: number) {
     const subjects: string[] = [];
-
     for (let gradeBook of gradeBooks) {
       if (studentId === gradeBook.studentId) {
         for (let subjectName in SubjectNames) {
@@ -92,16 +91,16 @@ class StudentGradeBook {
     return subjects;
   }
 
-  async submitGrade(studentId: number) {
-    const indexOfStudent = this.findUser(studentId);
+  async submitGrade(indexOfStudent: number) {
+    const student = gradeBooks[indexOfStudent];
     if (indexOfStudent !== -1) {
-      for (let subject of this.remainingSubjects(studentId)) {
-        const currentSubjectIndex = gradeBooks[indexOfStudent].subject.length;
+      for (let subject of this.remainingSubjects(student.studentId)) {
+        const currentSubjectIndex = student.subject.length;
         const insertGrade = Number(
           await this.prompt(`Enter the result for ${subject} subject: \n>>> `)
         );
 
-        gradeBooks[indexOfStudent].subject[currentSubjectIndex] = {
+        student.subject[currentSubjectIndex] = {
           name: SubjectNames[subject],
           result: insertGrade,
         };
@@ -131,8 +130,7 @@ class StudentGradeBook {
     return "Student Added";
   }
 
-  async updateStudentData(studentId: number) {
-    const indexOfStudent = this.findUser(studentId);
+  async updateStudentData(indexOfStudent: number) {
     const student: GradeBook = gradeBooks[indexOfStudent];
     console.log(
       "Which thing you want to update?\n1. Student Name\n2. Age\n3. Result\n4. Gender\n5. Subject Name\n0. Cancel\n"
@@ -183,8 +181,47 @@ class StudentGradeBook {
     }
     return "Student Data Updated";
   }
+
+  async display() {
+    const choise: number = Number(
+      await this.prompt(
+        `Student GradeBook\n
+1. Register Student (incl. Grade)
+2. Update Student Grade
+3. Update Student Data
+4. Show Remaining Subjects
+5. Search Student
+0. Exit\n
+>>> `
+      )
+    );
+
+    switch (choise) {
+      case 1:
+        this.registerStudent();
+        break;
+      case 2:
+        const indexOfStudent = this.findUser(await this.getStudentId);
+        console.log(indexOfStudent);
+        console.log(this.submitGrade(indexOfStudent));
+        break;
+      case 3:
+        const indexOfStudent = this.findUser(studentId);
+    }
+  }
+
+  get getStudentId() {
+    return (async () => {
+      return Number(await this.prompt("Enter Student's Id No.\n>>> "));
+    })();
+  }
 }
-console.log(gradeBooks[0].subject[0].result);
-const a = new StudentGradeBook();
-console.log(await a.updateStudentData(1));
-console.log(gradeBooks[0].subject[0].result);
+
+class Main extends StudentGradeBook {
+  constructor() {
+    super();
+    this.display();
+  }
+}
+
+const l = new Main();
