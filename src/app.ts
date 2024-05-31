@@ -99,7 +99,7 @@ class StudentGradeBook {
   async submitGrade(indexOfStudent: number) {
     const student = gradeBooks[indexOfStudent];
     if (indexOfStudent !== -1) {
-      for (let subject of this.remainingSubjects(student.studentId)) {
+      for (let subject of this.remainingSubjects(indexOfStudent)) {
         const currentSubjectIndex = student.subject.length;
         const insertGrade = Number(
           await this.prompt(`Enter the result for ${subject} subject: \n>>> `)
@@ -207,7 +207,8 @@ class StudentGradeBook {
       )
     );
 
-    const indexOfStudent = this.findUser(await this.getStudentId);
+    const indexOfStudent =
+      choise > 1 && choise < 6 ? this.findUser(await this.getStudentId) : -1;
 
     switch (choise) {
       case 1:

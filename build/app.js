@@ -72,7 +72,7 @@ class StudentGradeBook {
     async submitGrade(indexOfStudent) {
         const student = gradeBooks[indexOfStudent];
         if (indexOfStudent !== -1) {
-            for (let subject of this.remainingSubjects(student.studentId)) {
+            for (let subject of this.remainingSubjects(indexOfStudent)) {
                 const currentSubjectIndex = student.subject.length;
                 const insertGrade = Number(await this.prompt(`Enter the result for ${subject} subject: \n>>> `));
                 student.subject[currentSubjectIndex] = {
@@ -104,6 +104,11 @@ class StudentGradeBook {
         };
         gradeBooks.push(studentData);
         return "Student Added";
+    }
+    get getStudentId() {
+        return (async () => {
+            return Number(await this.prompt("Enter Student's Id No.\n>>> "));
+        })();
     }
     async updateStudentData(indexOfStudent) {
         const student = gradeBooks[indexOfStudent];
@@ -153,7 +158,7 @@ class StudentGradeBook {
 5. Search Student
 0. Exit\n
 >>> `));
-        const indexOfStudent = this.findUser(await this.getStudentId);
+        const indexOfStudent = choise > 1 && choise < 6 ? this.findUser(await this.getStudentId) : -1;
         switch (choise) {
             case 1:
                 this.registerStudent();
@@ -174,11 +179,6 @@ class StudentGradeBook {
                 console.log("Bye");
                 return 0;
         }
-    }
-    get getStudentId() {
-        return (async () => {
-            return Number(await this.prompt("Enter Student's Id No.\n>>> "));
-        })();
     }
 }
 class Main extends StudentGradeBook {
