@@ -15,6 +15,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@cloud-technology/cli-prompt": "^0.1.84"
+    "@cloud-technology/cli-prompt": "^0.1.84",
+    "promise": "link:node:fs/promise"
   }
 }

@@ -6,6 +6,8 @@
 //                   with arrays or lists for grades.
 // @ts-ignore
 import prompt from "@cloud-technology/cli-prompt";
+// @ts-ignore
+import { writeFile, readFile } from "fs/promises";
 var Gender;
 (function (Gender) {
     Gender["MALE"] = "MALE";
@@ -17,28 +19,6 @@ var SubjectNames;
     SubjectNames["WEB"] = "WEB";
     SubjectNames["MATH"] = "MATH";
 })(SubjectNames || (SubjectNames = {}));
-// sample
-const gradeBooks = [
-    {
-        studentId: 1,
-        firstName: "Abdisa",
-        lastName: "Alemu",
-        age: 21,
-        gender: Gender.MALE,
-        subject: [
-            {
-                name: SubjectNames.DSA,
-                teacherName: "Mr. Yared",
-                result: 100,
-            },
-            {
-                name: SubjectNames.WEB,
-                teacherName: "Mr. Yared",
-                result: 100,
-            },
-        ],
-    },
-];
 class StudentGradeBook {
     async prompt(message) {
         return await prompt(message);
@@ -71,19 +51,26 @@ class StudentGradeBook {
     }
     async submitGrade(indexOfStudent) {
         const student = gradeBooks[indexOfStudent];
+        let indexCounter = 0;
         if (indexOfStudent !== -1) {
             for (let subject of this.remainingSubjects(indexOfStudent)) {
                 const currentSubjectIndex = student.subject.length;
                 const insertGrade = Number(await this.prompt(`Enter the result for ${subject} subject: \n>>> `));
-                student.subject[currentSubjectIndex] = {
-                    name: SubjectNames[subject],
-                    result: insertGrade,
-                };
+                if (subject !== student.subject[indexCounter]?.name) {
+                    student.subject[currentSubjectIndex] = {
+                        name: SubjectNames[subject],
+                        result: insertGrade,
+                    };
+                }
+                else {
+                }
             }
-            return "Grade Well Updated!";
+            return student.subject.length === 3
+                ? console.log("All caught up!")
+                : this.save();
         }
         else
-            throw new Error("Something Bad Happened");
+            throw new Error("Something Bad Happened \u{26A0}");
     }
     async registerStudent() {
         const teacherName = await this.prompt("Your Name (optional): \n>>> ");
@@ -96,14 +83,14 @@ class StudentGradeBook {
             gender: await this.prompt("Gender: \n>>> "),
             subject: [
                 {
-                    name: await this.prompt("Subject Name: \n>>> "),
+                    name: (await this.prompt("Subject Name: \n>>> ")).toUpperCase(),
                     teacherName,
                     result: await this.prompt("Result: \n>>> "),
                 },
             ],
         };
         gradeBooks.push(studentData);
-        return "Student Added";
+        return this.save();
     }
     get getStudentId() {
         return (async () => {
@@ -112,7 +99,7 @@ class StudentGradeBook {
     }
     async updateStudentData(indexOfStudent) {
         const student = gradeBooks[indexOfStudent];
-        console.log("Which thing you want to update?\n1. Student Name\n2. Age\n3. Result\n4. Gender\n5. Subject Name\n0. Cancel\n");
+        console.log("Which thing you want to update?\n1. Student Name\n2. Age\n3. Grade\n4. Gender\n5. Subject Name\n0. Cancel\n");
         const choise = Number(await this.prompt(">>> "));
         const subjects = [];
         for (let subject of student.subject) {
@@ -147,12 +134,12 @@ class StudentGradeBook {
             case 0:
                 return "Bye!";
         }
-        return "Student Data Updated";
+        return this.save();
     }
     async display() {
         const choise = Number(await this.prompt(`Student GradeBook\n
 1. Register Student (incl. Grade)
-2. Update Student Grade
+2. Submit Student Grade
 3. Update Student Data
 4. Show Remaining Subjects
 5. Search Student
@@ -180,7 +167,33 @@ class StudentGradeBook {
                 return 0;
         }
     }
+    save() {
+        const filePath = "student-grade-book.json";
+        (async () => {
+            try {
+                await writeFile(filePath, JSON.stringify(gradeBooks));
+                console.log("Saved! \u{0001f4be}");
+            }
+            catch (error) {
+                console.error("Error \u{26A0}");
+            }
+        })();
+    }
+    static fetch() {
+        const filePath = "student-grade-book.json";
+        return (async () => {
+            try {
+                const studentData = await readFile(filePath, {});
+                // console.log(studentData);
+                return JSON.parse(studentData);
+            }
+            catch (error) {
+                console.error("Error reading file:", error);
+            }
+        })();
+    }
 }
+const gradeBooks = await StudentGradeBook.fetch();
 class Main extends StudentGradeBook {
     constructor() {
         super();
