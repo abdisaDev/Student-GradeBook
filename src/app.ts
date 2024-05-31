@@ -73,21 +73,26 @@ class StudentGradeBook {
     return -1;
   }
 
-  remainingSubjects(studentId: number) {
+  remainingSubjects(indexOfStudent: number) {
     const subjects: string[] = [];
-    for (let gradeBook of gradeBooks) {
-      if (studentId === gradeBook.studentId) {
-        for (let subjectName in SubjectNames) {
-          for (let subject of gradeBook.subject) {
-            if (subjectName === subject.name) {
-              continue;
-            } else {
-              subjects.push(subjectName);
-            }
-          }
-        }
-      }
+    const currentSubjects: string[] = [];
+    const student = gradeBooks[indexOfStudent];
+
+    let indexCounter = 0;
+
+    for (let subject of student.subject) {
+      currentSubjects.push(subject.name);
     }
+
+    for (let subjectName in SubjectNames) {
+      if (subjectName === currentSubjects[indexCounter]) {
+        indexCounter++;
+        continue;
+      }
+      subjects.push(subjectName);
+      indexCounter++;
+    }
+
     return subjects;
   }
 
@@ -105,8 +110,8 @@ class StudentGradeBook {
           result: insertGrade,
         };
       }
-    }
-    return "Grade Well Updated!";
+      return "Grade Well Updated!";
+    } else throw new Error("Something Bad Happened");
   }
 
   async registerStudent() {
@@ -128,6 +133,12 @@ class StudentGradeBook {
     };
     gradeBooks.push(studentData);
     return "Student Added";
+  }
+
+  get getStudentId() {
+    return (async () => {
+      return Number(await this.prompt("Enter Student's Id No.\n>>> "));
+    })();
   }
 
   async updateStudentData(indexOfStudent: number) {
@@ -196,24 +207,28 @@ class StudentGradeBook {
       )
     );
 
+    const indexOfStudent = this.findUser(await this.getStudentId);
+
     switch (choise) {
       case 1:
         this.registerStudent();
         break;
       case 2:
-        const indexOfStudent = this.findUser(await this.getStudentId);
-        console.log(indexOfStudent);
-        console.log(this.submitGrade(indexOfStudent));
+        await this.submitGrade(indexOfStudent);
         break;
       case 3:
-        const indexOfStudent = this.findUser(studentId);
+        await this.updateStudentData(indexOfStudent);
+        break;
+      case 4:
+        this.remainingSubjects(indexOfStudent);
+        break;
+      case 5:
+        console.log(gradeBooks[indexOfStudent]);
+        break;
+      case 6:
+        console.log("Bye");
+        return 0;
     }
-  }
-
-  get getStudentId() {
-    return (async () => {
-      return Number(await this.prompt("Enter Student's Id No.\n>>> "));
-    })();
   }
 }
 
