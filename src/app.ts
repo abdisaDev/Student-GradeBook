@@ -112,7 +112,7 @@ class StudentGradeBook {
         {
           name: (await this.prompt("Subject Name: \n>>> ")).toUpperCase(),
           teacherName,
-          result: await this.prompt("Result: \n>>> "),
+          result: Number(await this.prompt("Result: \n>>> ")),
         },
       ],
     };
@@ -253,4 +253,4 @@ class Main extends StudentGradeBook {
   }
 }
 
-const l = new Main();
+new Main();
