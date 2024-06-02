@@ -11,6 +11,9 @@ importers:
       '@cloud-technology/cli-prompt':
         specifier: ^0.1.84
         version: 0.1.84
+      promise:
+        specifier: link:node:fs/promise
+        version: link:node:fs/promise
     devDependencies:
       typescript:
         specifier: ^5.4.5

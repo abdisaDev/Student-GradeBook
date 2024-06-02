@@ -1,0 +1,41 @@
+[
+  {
+    "studentId": 1,
+    "firstName": "Abdisa",
+    "lastName": "Alemu",
+    "age": 21,
+    "gender": "MALE",
+    "subject": [
+      { "name": "DSA", "teacherName": "Mr. Yared", "result": 400 },
+      { "name": "WEB", "teacherName": "Mr. Yared", "result": 100 }
+    ]
+  },
+  {
+    "studentId": 2,
+    "firstName": "dsad",
+    "lastName": "dsa",
+    "age": "f",
+    "gender": "f",
+    "subject": [
+      { "name": "DSA", "result": 100 },
+      { "name": "WEB", "result": 200 },
+      { "name": "MATH", "result": 200 }
+    ]
+  },
+  {
+    "studentId": 3,
+    "firstName": "Abdisa",
+    "lastName": "Alemu",
+    "age": "21",
+    "gender": "Male",
+    "subject": [{ "name": "DSA", "teacherName": "Mr. X", "result": "200" }]
+  },
+  {
+    "studentId": 4,
+    "firstName": "dsa",
+    "lastName": "dsa",
+    "age": "2",
+    "gender": "dsa",
+    "subject": [{ "name": "DSA", "teacherName": "dsa", "result": null }]
+  }
+]
