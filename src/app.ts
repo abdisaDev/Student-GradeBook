@@ -184,7 +184,3 @@ class StudentGradeBook {
     return "Student Data Updated";
   }
 }
-console.log(gradeBooks[0].subject[0].result);
-const a = new StudentGradeBook();
-console.log(await a.updateStudentData(1));
-console.log(gradeBooks[0].subject[0].result);
